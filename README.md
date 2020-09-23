@@ -1,10 +1,9 @@
-<img src="https://github.com/daniel-cotton/typeless/blob/master/docs/logo.svg">
+<img src="https://raw.githubusercontent.com/daniel-cotton/typeless/live/docs/logo.svg">
 
 Generate type definitions from a web-page. Type more whilst typing less with Typeless.
 
 ```js
 const Typeless = require('@dancotton/typeless');
-const config = require('./config.json');
 
 (async () => {  
   const types = await Typeless.scrapeTypes(config);
@@ -12,6 +11,17 @@ const config = require('./config.json');
   // Write files to disk using fs! 
   // For now, only supports a flat directory structure!
 })()
+
+// Config data structure
+const config = {
+  pageURL,
+  objectRowSelector,
+  objectRowToNameSelector,
+  objectRowToPropertiesSelector,
+  objectRowToInheritanceSelector,
+  propertyRowToNameSelector,
+  propertyRowToTypeSelector
+}
 ```
 
 
