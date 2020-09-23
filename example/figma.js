@@ -6,4 +6,7 @@ const config = require('./config.json');
   
   console.log(`Scraped ${types.length} types...`);
   console.log(types[5].typeFileString);
+
+  // Write files to disk using fs! 
+  // For now, only supports a flat directory structure!
 })()

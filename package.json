@@ -1,5 +1,5 @@
 {
-  "name": "typeless",
+  "name": "type-less",
   "version": "0.0.1",
   "description": "Type more whilst typing less, with typeless auto-generated types from documentation",
   "main": "index.js",
