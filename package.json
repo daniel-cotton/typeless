@@ -1,0 +1,15 @@
+{
+  "name": "typeless",
+  "version": "0.0.1",
+  "description": "Type more whilst typing less, with typeless auto-generated types from documentation",
+  "main": "index.js",
+  "repository": "git@github.com:daniel-cotton/typeless.git",
+  "author": "Dan Cotton <dan.cotton@capgemini.com>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^5.3.1"
+  },
+  "scripts": {
+    "example:figma": "node ./example/figma.js"
+  }
+}

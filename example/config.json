@@ -1,0 +1,11 @@
+{
+  "figma": {
+    "pageURL": "https://www.figma.com/developers/api#paint-type",
+    "objectRowSelector": "#files > div > div > div > table > tbody > tr",
+    "objectRowToNameSelector": "td:first-child :first-child",
+    "objectRowToPropertiesSelector": "td:last-child > div",
+    "objectRowToInheritanceSelector": "td:last-child > div:first-child > span a > span",
+    "propertyRowToNameSelector": "span:first-child span",
+    "propertyRowToTypeSelector": "span:not(:first-child) span"
+  }
+}
