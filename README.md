@@ -3,7 +3,7 @@
 Generate type definitions from a web-page. Type more whilst typing less with Typeless.
 
 ```js
-const Typeless = require('type-less');
+const Typeless = require('@dancotton/typeless');
 const config = require('./config.json');
 
 (async () => {  
@@ -30,7 +30,7 @@ Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
 ```bash
-$ npm install type-less
+$ npm install @dancotton/typeless
 ```
 
 ## Features
