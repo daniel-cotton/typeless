@@ -11,10 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install
-        uses: daniel-cotton/puppeteer-container@master
+        uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
         with:
           args: pnpm install
       - name: Test
-        uses: daniel-cotton/puppeteer-container@master
+        uses: ianwalter/puppeteer-container@acc52cd2334ad9eaf6e1974562d263e0a711b7e8
         with:
           args: pnpm test
