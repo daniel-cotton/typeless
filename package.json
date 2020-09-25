@@ -1,6 +1,6 @@
 {
   "name": "@dancotton/typeless",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Type more whilst typing less, with typeless auto-generated types from documentation",
   "main": "index.js",
   "repository": {
