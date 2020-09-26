@@ -22,7 +22,10 @@ const config = {
   objectRowToPropertiesSelector,
   objectRowToInheritanceSelector,
   propertyRowToNameSelector,
-  propertyRowToTypeSelector
+  propertyRowToTypeSelector,
+  puppeteerOptions: {
+    args: []
+  }
 }
 ```
 
