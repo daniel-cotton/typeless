@@ -2,7 +2,7 @@ name: Deploy Docs
 on:
   push:
     branches:
-      - feat/documentation
+      - live
 jobs:
   deploy:
     runs-on: ubuntu-18.04
