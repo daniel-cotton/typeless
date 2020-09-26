@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>model/InterfaceDescription.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="InterfaceDescription.html">InterfaceDescription</a></li></ul><h3>Modules</h3><ul><li><a href="module-@dancotton_typeless.html">@dancotton/typeless</a></li></ul><h3>Global</h3><ul><li><a href="global.html#scrapeTypes">scrapeTypes</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">model/InterfaceDescription.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+const { arrayToUnique } = require('../utils/array');
+const MissingArgumentError = require('../error/MissingArgumentError');
+
+/**
+ * @typedef {Object} TypedProperty
+ * @property {string} name the name of the property
+ * @property {string} type the datatype of the property
+ */
+
+/**
+ * A class describing an entity's interface, containing 
+ * information about the name of the entity, it's properties
+ * and it's inheritance.
+ * 
+ * This class provides getters to construct Typescript
+ * interfaces as strings, from the object's contents.
+ */
+class InterfaceDescription {
+  /**
+   * A class describing an entity's interface, containing 
+   * information about the name of the entity, it's properties
+   * and it's inheritance.
+   * 
+   * This class provides getters to construct Typescript
+   * interfaces as strings, from the object's contents.
+   * 
+   * @param {string} name 
+   * @param {TypedProperty[]} typedProperties 
+   * @param {string?} inherits 
+   * 
+   * @throws {MissingArgumentError} if name or typedProperties are missing, an error will be thrown.
+   */
+  constructor(name, typedProperties, inherits) {
+    this.name = name;
+    this.typedProperties = typedProperties;
+    this.inherits = inherits;
+
+    if (!this.name) {
+      throw new MissingArgumentError('name');
+    } else if (!this.typedProperties) {
+      throw new MissingArgumentError('typedProperties');
+    } else if (!this.inherits) {
+      this.inherits = null;
+    }
+
+    if (!this.inherits &amp;&amp; this.name === `${this.name}`.toUpperCase()) {
+      this.inherits = "Node";
+    }
+  }
+
+  /**
+   * This getter returns a string of valid ESModule imports 
+   * based on the types used by properties and inheritance
+   * within this interface.
+   * 
+   * @returns {string} a valid string of ESModule imports for the types used by this module
+   */
+  get imports() {
+    const defaultTypes = ["Number", "String", "Boolean", "Map"];
+    return this.uniqueTypes
+      .filter(type => defaultTypes.indexOf(type) &lt; 0)
+      .map(type => `import ${type} from "./${type}";`)
+      .join("\n")
+  }
+
+  /**
+   * This method returns an array of strings containing the
+   * names of the unique data types leveraged by this 
+   * interface.
+   * 
+   * @returns {string[]} an array of unique datatypes used in this interface
+   */
+  get uniqueTypes() {
+    try {
+      return arrayToUnique([
+        this.inherits,
+        ...(this.typedProperties || []).map(property => property.type.split("[")[0])
+      ]
+        .map(type => type &amp;&amp; type.split("&lt;").join(", ").split(">").join("").split(", "))
+        .flat()
+        .filter(type => !!type));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  /**
+   * This method generates and returns the interface declaration
+   * line of typescript for the described entity, including
+   * extending an interface defined as inherited.
+   * 
+   * @returns {string} a valid typescript declaration string, defining an interface with potential inheritance.
+   */
+  get interfaceDeclaration() {
+    return `interface ${this.name}${this.inherits ? ` extends ${this.inherits}` : ""}`
+  }
+
+  /**
+   * This method generates a string consisting of valid
+   * typescript, defining the properties that the entity
+   * exposes.
+   * 
+   * @returns {string} a string of valid syntax for declaring typescript properties in an interface
+   */
+  get interfaceProperties() {
+    return this.typedProperties
+      .map(prop => `${prop.name}: ${prop.type};`)
+      .join("\n  ");
+  }
+
+  /**
+   * This method generates a string consisting of valid
+   * typescript, defining a Typescript Interface including
+   * imports, interface declaration, properties, inheritance
+   * and default export of the interface.
+   * 
+   * @returns {string} a string that is valid code for a typescript interface file
+   */
+  get typeFileString() {
+    return `${this.imports}
+
+export default ${this.interfaceDeclaration} {
+  ${this.interfaceProperties}
+}`.trim()
+  }
+}
+
+module.exports = InterfaceDescription;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sat Sep 26 2020 01:14:52 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
