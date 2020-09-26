@@ -1,0 +1,6 @@
+{
+  "recurseDepth": 10,
+  "opts": {
+    "template": "node_modules/docdash"
+  }
+}

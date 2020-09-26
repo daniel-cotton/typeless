@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "Type more whilst typing less, with typeless auto-generated types from documentation",
   "main": "index.js",
+  "homepage": "https://typeless.daniel-cotton.co.uk/",
   "repository": {
     "type": "git",
     "url": "https://github.com/daniel-cotton/typeless.git"
@@ -13,12 +14,15 @@
     "puppeteer": "^5.3.1"
   },
   "scripts": {
+    "documentation": "jsdoc lib ./README.md --configure jsdoc.conf.json -d docs -r",
     "example:figma": "node ./example/figma.js",
     "test": "jest",
     "test:ci": "CI=true jest --reporters=default --reporters=jest-github-actions-reporter"
   },
   "devDependencies": {
+    "docdash": "^1.2.0",
     "jest": "^26.4.2",
-    "jest-github-actions-reporter": "^1.0.2"
+    "jest-github-actions-reporter": "^1.0.2",
+    "jsdoc": "^3.6.6"
   }
 }
