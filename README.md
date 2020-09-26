@@ -2,6 +2,8 @@
 
 Generate type definitions from a web-page. Type more whilst typing less with Typeless.
 
+![CI](https://github.com/daniel-cotton/typeless/workflows/CI/badge.svg) ![NPM](https://badge.fury.io/js/%40dancotton%2Ftypeless.svg)
+
 ```js
 const Typeless = require('@dancotton/typeless');
 
@@ -20,7 +22,10 @@ const config = {
   objectRowToPropertiesSelector,
   objectRowToInheritanceSelector,
   propertyRowToNameSelector,
-  propertyRowToTypeSelector
+  propertyRowToTypeSelector,
+  puppeteerOptions: {
+    args: []
+  }
 }
 ```
 

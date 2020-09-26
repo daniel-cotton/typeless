@@ -14,9 +14,11 @@
   },
   "scripts": {
     "example:figma": "node ./example/figma.js",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "CI=true jest --reporters=default --reporters=jest-github-actions-reporter"
   },
   "devDependencies": {
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "jest-github-actions-reporter": "^1.0.2"
   }
 }
