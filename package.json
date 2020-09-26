@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Type more whilst typing less, with typeless auto-generated types from documentation",
   "main": "index.js",
-  "homepage": "https://daniel-cotton.github.io/typeless/",
+  "homepage": "https://typeless.daniel-cotton.co.uk/",
   "repository": {
     "type": "git",
     "url": "https://github.com/daniel-cotton/typeless.git"
