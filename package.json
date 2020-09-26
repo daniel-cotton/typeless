@@ -14,7 +14,7 @@
     "puppeteer": "^5.3.1"
   },
   "scripts": {
-    "documentation": "jsdoc lib ./README.md --configure jsdoc.conf.json -r",
+    "documentation": "jsdoc lib ./README.md --configure jsdoc.conf.json -d docs -r",
     "example:figma": "node ./example/figma.js",
     "test": "jest",
     "test:ci": "CI=true jest --reporters=default --reporters=jest-github-actions-reporter"
